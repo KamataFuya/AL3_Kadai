@@ -1,8 +1,8 @@
 ﻿#pragma once
 
 #include "Audio.h"
-#include "DirectXCommon.h"
 #include "DebugText.h"
+#include "DirectXCommon.h"
 #include "Input.h"
 #include "Model.h"
 #include "SafeDelete.h"
@@ -47,6 +47,31 @@ class GameScene {
 	Input* input_ = nullptr;
 	Audio* audio_ = nullptr;
 	DebugText* debugText_ = nullptr;
+
+	//テクスチャハンドル
+	uint32_t textureHandle_ = 0;
+	// 3Dモデル
+	Model* model_ = nullptr;
+	//ワールドビュートランスフォーム
+	WorldTransform worldTransform_[100];
+	//ビュープロジェクション
+	ViewProjection viewProjection_;
+	//カメラ上方向の角度
+	float viewAngle = 0.0f;
+
+	public:
+		//パーツID
+		enum PartId {
+			Root,//大元
+			Spine,//脊椎
+			Chest,//胸
+			Head,//頭
+			ArmL,//左腕
+			ArmR,//右腕
+			Hip,//尻
+			LegL,//左足
+			LegR,//右足
+	  };
 
 	/// <summary>
 	/// ゲームシーン用
